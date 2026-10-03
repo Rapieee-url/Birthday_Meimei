@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071a36">
+<title>For Meimei ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root{
+  --navy:#06152d;
+  --navy2:#0b2447;
+  --blue:#183e70;
+  --gold:#d9ba80;
+  --cream:#f8f3eb;
+  --white:#fffdf9;
+  --muted:#b9c5d7;
+  --glass:rgba(255,255,255,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--white);font-family:'DM Sans',sans-serif;
+  background:
+   radial-gradient(circle at 10% 0%,rgba(61,111,174,.3),transparent 30%),
+   radial-gradient(circle at 90% 20%,rgba(217,186,128,.12),transparent 25%),
+   linear-gradient(135deg,#041128,#0a2344 48%,#06152d);
+  overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;
+ background-image:radial-gradient(#fff 1px,transparent 1px);
+ background-size:30px 30px;
+}
+button{font:inherit}
+a{text-decoration:none;color:inherit}
+.birthday-banner{margin:0 0 45px;padding:32px;border:1px solid rgba(217,186,128,.3);border-radius:24px;background:linear-gradient(135deg,rgba(217,186,128,.11),rgba(255,255,255,.035));text-align:center;box-shadow:0 20px 55px rgba(0,0,0,.16)}
+.birthday-banner span{display:block;color:var(--gold);font-size:.68rem;letter-spacing:.28em;margin-bottom:13px}.birthday-banner strong{display:block;font:500 clamp(1.8rem,4vw,3rem)/1.08 "Cormorant Garamond",serif;max-width:850px;margin:auto}.birthday-banner small{display:block;color:var(--muted);margin-top:13px}.birthday-message{padding-top:35px}.birthday-card{padding:55px 45px;border-radius:28px;background:linear-gradient(145deg,rgba(24,62,112,.6),rgba(255,255,255,.04));border:1px solid rgba(217,186,128,.2);text-align:center;overflow:hidden;position:relative}.birthday-card:before,.birthday-card:after{content:"♡";position:absolute;color:var(--gold);opacity:.14;font-size:130px}.birthday-card:before{left:-25px;top:-40px}.birthday-card:after{right:-20px;bottom:-55px}.birthday-card h3{font:500 clamp(3rem,7vw,5.5rem)/.9 "Cormorant Garamond",serif;margin:18px 0}.birthday-card h3 em{font-style:normal;color:var(--gold)}.birthday-card p{max-width:720px;margin:auto;color:var(--muted);line-height:1.9}.wish-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.wish-row span{border:1px solid rgba(217,186,128,.3);padding:9px 14px;border-radius:999px;color:var(--gold);font-size:.72rem;letter-spacing:.08em}
+.container{width:min(1120px,92%);margin:auto}
+.hidden{display:none!important}
+
+/* LOADING / OPENING */
+#opening{
+ min-height:100svh;display:grid;place-items:center;text-align:center;
+ position:relative;padding:30px;overflow:hidden;
+}
+.open-orbit{
+ width:min(430px,80vw);height:min(430px,80vw);border:1px solid rgba(217,186,128,.2);
+ border-radius:50%;position:absolute;animation:spin 24s linear infinite;
+}
+.open-orbit:before,.open-orbit:after{
+ content:"♡";position:absolute;color:var(--gold);font-size:22px;
+}
+.open-orbit:before{top:-12px;left:50%}.open-orbit:after{bottom:-12px;right:25%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.open-content{position:relative;z-index:2}
+.mini{
+ text-transform:uppercase;letter-spacing:.32em;color:var(--gold);font-size:.7rem;
+}
+.open-content h1{
+ font:500 clamp(5rem,17vw,10rem)/.72 'Cormorant Garamond',serif;margin:28px 0;
+}
+.open-content h1 span{color:var(--gold)}
+.open-content p{max-width:530px;color:var(--muted);line-height:1.9;margin:0 auto 30px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+ border:1px solid rgba(217,186,128,.65);background:rgba(255,255,255,.06);
+ color:white;border-radius:999px;padding:13px 22px;cursor:pointer;
+ transition:.25s;backdrop-filter:blur(12px);
+}
+.btn:hover{transform:translateY(-3px);background:var(--gold);color:var(--navy)}
+.btn.primary{background:var(--gold);color:var(--navy)}
+.btn.primary:hover{background:#efd29c}
+.scroll-hint{margin-top:45px;color:rgba(255,255,255,.4);font-size:.72rem;letter-spacing:.15em}
+
+/* NAV */
+nav{
+ position:fixed;top:0;left:0;right:0;z-index:40;
+ background:rgba(4,17,40,.68);backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:500 1.65rem 'Cormorant Garamond',serif}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:22px;font-size:.8rem;color:var(--muted)}
+.nav-links a:hover{color:white}
+.music{
+ position:fixed;right:18px;bottom:18px;z-index:60;width:54px;height:54px;
+ border-radius:50%;border:1px solid rgba(217,186,128,.7);
+ background:rgba(5,20,43,.9);color:var(--gold);cursor:pointer;
+ box-shadow:0 15px 40px rgba(0,0,0,.35)
+}
+
+/* GENERAL */
+section{scroll-margin-top:80px}
+.hero{min-height:100svh;padding:125px 0 80px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
+.eyebrow{color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem}
+.hero h2{
+ font:500 clamp(4rem,8vw,7.5rem)/.78 'Cormorant Garamond',serif;margin:22px 0 28px;
+}
+.hero h2 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--muted);line-height:1.9;max-width:600px}
+.hero-card{
+ position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;
+ border:1px solid rgba(255,255,255,.13);box-shadow:0 30px 80px rgba(0,0,0,.35);
+ transform:rotate(2deg)
+}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.3),transparent 50%)}
+.hero-label{position:absolute;z-index:2;bottom:18px;left:18px;font:1.5rem 'Cormorant Garamond',serif}
+.quick-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.quick-actions .btn{font-size:.78rem;padding:11px 17px}
+
+.section{padding:110px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+.section-head h3{font:500 clamp(2.8rem,6vw,5rem)/.85 'Cormorant Garamond',serif;margin:10px 0}
+.section-head p{max-width:470px;color:var(--muted);line-height:1.8}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 45px}
+.stat{
+ padding:25px;border:1px solid rgba(255,255,255,.09);background:var(--glass);
+ border-radius:20px
+}
+.stat b{display:block;font:500 2.6rem 'Cormorant Garamond',serif;color:var(--gold)}
+.stat span{font-size:.78rem;color:var(--muted)}
+
+.gallery{columns:3 260px;column-gap:16px}
+.photo{
+ break-inside:avoid;margin:0 0 16px;position:relative;border-radius:18px;
+ overflow:hidden;cursor:pointer;background:#10284a;border:1px solid rgba(255,255,255,.06)
+}
+.photo img{width:100%;display:block;transition:.5s}
+.photo:hover img{transform:scale(1.06)}
+.photo .tag{
+ position:absolute;left:12px;bottom:12px;padding:7px 11px;border-radius:999px;
+ background:rgba(4,17,40,.72);font-size:.68rem;backdrop-filter:blur(8px)
+}
+
+/* MEMORY CARDS */
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.memory{
+ min-height:270px;padding:25px;border-radius:22px;border:1px solid rgba(255,255,255,.1);
+ background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+ display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden
+}
+.memory:before{
+ content:"";position:absolute;width:160px;height:160px;border-radius:50%;
+ background:rgba(217,186,128,.12);filter:blur(25px);top:-60px;right:-30px
+}
+.memory .num{color:var(--gold);font-size:.7rem;letter-spacing:.2em}
+.memory h4{font:500 2.1rem 'Cormorant Garamond',serif;margin:8px 0}
+.memory p{color:var(--muted);font-size:.82rem;line-height:1.7;margin:0}
+
+/* LETTER */
+.letter-wrap{display:grid;place-items:center}
+.letter{
+ width:min(760px,100%);padding:55px 45px;border-radius:28px;
+ background:var(--cream);color:#18263b;box-shadow:0 30px 80px rgba(0,0,0,.28);
+ position:relative;overflow:hidden
+}
+.letter:before{content:"♡";position:absolute;right:25px;top:10px;color:#c9a96d;font-size:100px;opacity:.12}
+.letter small{letter-spacing:.18em;text-transform:uppercase;color:#8c7145}
+.letter h3{font:600 clamp(2.8rem,6vw,4.7rem)/.85 'Cormorant Garamond',serif;margin:15px 0 25px}
+.letter p{line-height:2;color:#445066}
+.signature{margin-top:28px;font:500 2rem 'Cormorant Garamond',serif;color:#9a7741}
+
+/* SURPRISE */
+.surprise{
+ text-align:center;padding:70px 25px;border:1px solid rgba(217,186,128,.2);
+ border-radius:28px;background:rgba(255,255,255,.04)
+}
+.surprise h3{font:500 3.7rem 'Cormorant Garamond',serif;margin:0 0 14px}
+.surprise p{color:var(--muted);max-width:570px;margin:0 auto 28px;line-height:1.8}
+#secret{display:none;margin:25px auto 0;max-width:620px;color:var(--gold);font:500 1.8rem 'Cormorant Garamond',serif;line-height:1.4}
+#secret.show{display:block;animation:fadeUp .7s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+footer{padding:65px 0 100px;text-align:center;color:rgba(255,255,255,.42);font-size:.75rem}
+
+/* MODAL */
+.modal{
+ position:fixed;inset:0;z-index:100;background:rgba(1,7,17,.95);
+ display:none;place-items:center;padding:20px
+}
+.modal.open{display:grid}
+.modal img{max-width:92vw;max-height:88vh;border-radius:16px}
+.close{position:absolute;top:18px;right:22px;background:none;border:0;color:white;font-size:2.2rem;cursor:pointer}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:.8s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:780px){
+ .nav-links{display:none}
+ .hero-grid{grid-template-columns:1fr;gap:35px}
+ .hero-card{transform:none;max-width:500px;margin:auto}
+ .section-head{display:block}
+ .stats,.memory-grid{grid-template-columns:1fr}
+ .letter{padding:38px 25px}
+}
+</style>
+</head>
+<body>
+
+<!-- OPENING -->
+<section id="opening">
+  <div class="open-orbit"></div>
+  <div class="open-content">
+    <div class="mini">a little birthday website made for</div>
+    <h1>Meimei <span>♡</span></h1>
+    <p>
+      Riva Azahra / Meme.<br>
+      Hari ini bukan cuma tentang bertambahnya usia, tapi tentang merayakan seseorang yang begitu berarti. Selamat ulang tahun, Meimei. ♡
+    </p>
+    <div class="actions">
+      <button class="btn primary" onclick="enterSite()">Masuk ke halaman ♡</button>
+      <button class="btn" onclick="startMusic()">♫ Putar musik</button>
+    </div>
+    <div class="scroll-hint">tap one of the buttons above</div>
+  </div>
+</section>
+
+<div id="site" class="hidden">
+<nav>
+ <div class="container nav-inner">
+  <a class="logo" href="#home">Meimei <span>♡</span></a>
+  <div class="nav-links">
+   <a href="#home">Home</a>
+   <a href="#gallery">Gallery</a>
+   <a href="#memories">Memories</a>
+   <a href="#letter">A Note</a>
+   <a href="#birthday">Birthday</a>
+   <a href="#surprise">Surprise</a>
+  </div>
+ </div>
+</nav>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+<main id="home">
+<section class="hero">
+ <div class="container hero-grid">
+  <div class="reveal">
+   <div class="eyebrow">birthday wishes · for Riva Azahra</div>
+   <h2>Happy Birthday,<br><em>Meimei.</em></h2>
+   <p>
+    Selamat datang di tempat kecil yang dibuat khusus untuk menyimpan
+    potongan-potongan cerita. Hari ini, semua halaman ini dibuat untuk satu alasan sederhana:
+    merayakan hari lahir Meimei dan mengingatkan bahwa setiap tahun selalu membawa cerita baru.
+   </p>
+   <div class="quick-actions">
+    <a class="btn primary" href="#gallery">Lihat foto ♡</a>
+    <a class="btn" href="#memories">Buka memories</a>
+    <a class="btn" href="#letter">Baca pesan</a>
+   </div>
+  </div>
+  <div class="hero-card reveal">
+   <img src="photos/photo8.jpeg" alt="Riva Azahra">
+   <div class="hero-label">Meimei ♡</div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="gallery">
+ <div class="container">
+  <div class="section-head reveal">
+   <div><div class="eyebrow">01 / gallery</div><h3>Little moments.</h3></div>
+   <p>Setiap foto punya ceritanya tersendiri. Klik foto untuk melihatnya lebih besar.</p>
+  </div>
+  <div class="birthday-banner reveal">
+   <span>✦ BIRTHDAY WISHES ✦</span>
+   <strong>Semoga tahun ini membawa lebih banyak senyum, ketenangan, rezeki, dan hal-hal baik yang tidak disangka-sangka.</strong>
+   <small>Keep growing, keep smiling, and keep being you. ♡</small>
+  </div>
+  <div class="stats reveal">
+   <div class="stat"><b>11</b><span>moments collected</span></div>
+   <div class="stat"><b>∞</b><span>things to remember</span></div>
+   <div class="stat"><b>♡</b><span>made especially for Meimei</span></div>
+  </div>
+  <div class="gallery">
+   <figure class="photo reveal"><img src="photos/photo1.jpeg"><span class="tag"> · smile</span></figure>
+   <figure class="photo reveal"><img src="photos/photo2.jpeg"><span class="tag"> · sunshine</span></figure>
+   <figure class="photo reveal"><img src="photos/photo3.jpeg"><span class="tag"> · little wink</span></figure>
+   <figure class="photo reveal"><img src="photos/photo4.jpeg"><span class="tag"> · night</span></figure>
+   <figure class="photo reveal"><img src="photos/photo5.jpeg"><span class="tag"> · dinner</span></figure>
+   <figure class="photo reveal"><img src="photos/photo6.jpeg"><span class="tag"> · blue</span></figure>
+   <figure class="photo reveal"><img src="photos/photo7.jpeg"><span class="tag"> · golden hour</span></figure>
+   <figure class="photo reveal"><img src="photos/photo8.jpeg"><span class="tag"> · together</span></figure>
+   <figure class="photo reveal"><img src="photos/photo9.jpeg"><span class="tag"> · another day</span></figure>
+   <figure class="photo reveal"><img src="photos/photo10.jpeg"><span class="tag"> · us</span></figure>
+   <figure class="photo reveal"><img src="photos/photo11.jpeg"><span class="tag"> · memory</span></figure>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="memories">
+ <div class="container">
+  <div class="section-head reveal">
+   <div><div class="eyebrow">02 / memories</div><h3>Three little chapters.</h3></div>
+   <p>Halaman ini abg buat bukan hanya sekedar untuk ucapan selamat ulang tahun buat kamu. tapi juga sebagai pengingat buat kamu bahwa udah banyak cerita yang kita lalui sama-sama.</p>
+  </div>
+  <div class="memory-grid">
+   <article class="memory reveal"><span class="num">CHAPTER 01</span><h4>The first little things.</h4><p>Hal-hal kecil yang mungkin terlihat sederhana, tapi justru sering paling lama diingat.</p></article>
+   <article class="memory reveal"><span class="num">CHAPTER 02</span><h4>The days we kept.</h4><p>Hari-hari yang berlalu begitu cepat, lalu berubah menjadi foto dan cerita.</p></article>
+   <article class="memory reveal"><span class="num">CHAPTER 03</span><h4>Still more to come.</h4><p>Karena sebuah album tidak harus selesai hari ini. Masih banyak halaman kosong untuk cerita berikutnya.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section birthday-message" id="birthday">
+ <div class="container">
+  <div class="birthday-card reveal">
+   <div class="eyebrow">a little celebration</div>
+   <h3>Today is <em>your day.</em></h3>
+   <p>Selamat ulang tahun, Meimei. Semoga di usia yang baru ini, langkahmu selalu dipertemukan dengan orang-orang baik, kesempatan yang baik, dan alasan-alasan kecil untuk tersenyum setiap hari dan harapan terbesar abg semoga tahun-tahun berikutnya abg masih menjadi orang yang tetap nemenin kamu disaat kamu sedih,senang bahkan terpuruk sekalipun.</p>
+   <div class="wish-row"><span>more smiles</span><span>more memories</span><span>more dreams</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="letter">
+ <div class="container letter-wrap">
+  <div class="letter reveal">
+   <small>a note for meimei</small>
+   <h3>Dear Meimei,</h3>
+   <p>
+    Meme, Website kecil ini abg buat sebagai tempat
+    untuk menyimpan beberapa momen yang sayang kalau hanya tersimpan di galeri.
+    Semoga ketika halaman ini meme buka lagi nanti, setiap foto bisa membawa
+    kembali suasana, senyum, dan cerita yang pernah ada.
+   </p>
+   <p>
+    Tidak perlu sesuatu yang sempurna. Cukup sesuatu yang tulus, sederhana,
+    dan punya arti. Dan untuk hari spesial ini, semoga semua doa baik pelan-pelan menemukan jalannya menuju kamu.
+   </p>
+   <p><strong>Selamat ulang tahun, Meimei.</strong> Semoga kamu selalu punya alasan untuk tersenyum, keberanian untuk mengejar hal yang kamu inginkan, dan banyak momen indah yang layak dikenang dan semoga abg menjadi salah satu alasan kamu untuk tetap tersenyum dan bahagia.</p>
+   <div class="signature">with a little ♡</div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="surprise">
+ <div class="container">
+  <div class="surprise reveal">
+   <div class="eyebrow">03 / birthday surprise</div>
+   <h3>One more wish for you.</h3>
+   <p>Kalau kamu sudah sampai sejauh ini, berarti ada satu ucapan terakhir yang belum disampaikan.</p>
+   <button class="btn primary" onclick="showSecret()">Buka kejutan ♡</button>
+   <div id="secret">“Selamat ulang tahun sayangku cintaku MyLove. Semoga diumur kamu yang ke-20 ini hari-hari kamu jauh lebih menyenangkan. abg berharap semoga segala sesuatu yang belum terwujud di tahun lalu bakal terwujud di tahun ini dan abg bakal jadi orang yang selalu nemenin kamu dalam menggapai semua mimpi yang kamu impikan. ♡”</div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>Made with navy, memories & a little bit of love ♡</footer>
+</div>
+
+<audio id="music" loop preload="metadata">
+ <source src="music/about-you.mp3" type="audio/mpeg">
+</audio>
+
+<div class="modal" id="modal" onclick="closeModal(event)">
+ <button class="close" onclick="closeModal()">×</button>
+ <img id="modalImg" src="" alt="Foto">
+</div>
+
+<script>
+const music=document.getElementById('music');
+const musicBtn=document.getElementById('musicBtn');
+
+function enterSite(){
+ document.getElementById('opening').classList.add('hidden');
+ document.getElementById('site').classList.remove('hidden');
+ window.scrollTo(0,0);
+ startMusic();
+ setTimeout(observeReveal,100);
+}
+function startMusic(){
+ music.play().catch(()=>{});
+}
+function toggleMusic(){
+ if(music.paused){
+  music.play().catch(()=>alert('Pastikan file music/about-you.mp3 sudah diletakkan di folder music.'));
+ }else music.pause();
+}
+music.addEventListener('play',()=>musicBtn.textContent='❚❚');
+music.addEventListener('pause',()=>musicBtn.textContent='♫');
+
+function observeReveal(){
+ const els=document.querySelectorAll('.reveal');
+ const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+ },{threshold:.12});
+ els.forEach(el=>io.observe(el));
+}
+
+document.querySelectorAll('.photo img').forEach(img=>{
+ img.addEventListener('click',()=>{
+  document.getElementById('modalImg').src=img.src;
+  document.getElementById('modal').classList.add('open');
+ });
+});
+function closeModal(e){
+ if(!e || e.target.id==='modal' || e.target.classList.contains('close'))
+  document.getElementById('modal').classList.remove('open');
+}
+function showSecret(){
+ const s=document.getElementById('secret');
+ s.classList.add('show');
+ s.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
